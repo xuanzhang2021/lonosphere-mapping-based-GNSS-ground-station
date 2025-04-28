@@ -56,17 +56,23 @@ Cons:
 For current smartphone navigation, DGNSS and PPP strike a balance between accuracy and accessibility, though they lag in precision. RTK excels in specialized, high-accuracy scenarios but is constrained by infrastructure. PPP-RTK emerges as the most promising future technique, blending global coverage with rapid convergence, contingent on broader correction networks and enhanced smartphone capabilities. As dual-frequency GNSS adoption grows and 5G connectivity expands, PPP-RTK could redefine mobile navigation, marrying high accuracy with scalability for mainstream use.
 
 ### Guidelines on Using AI
+
 #### Model: 
+
 1. ChatGPT 4o mini
 2. deepseek-R1
+
 #### Prompt:
+
 Please give me the pros and cons of different differential GNSS for smartphone positioning.  
 
 #### Comment: 
 It’s free and great for reasoning and answering questions. 
 
 #### Chatroom Link (if any): 
+
 https://genai.polyu.edu.hk/GPT4O
+
 https://poe.com/
 
 ## Task 2: 
