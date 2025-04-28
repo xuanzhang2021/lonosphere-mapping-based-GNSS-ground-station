@@ -75,12 +75,22 @@ https://genai.polyu.edu.hk/GPT4O
 
 https://poe.com/
 
-## Task 2: LEO Satellites for Navigation
+## Task 2: 
+
+## Task 3: 
+
+## Task 4: LEO Satellites for Navigation
 
 Low Earth Orbit (LEO) satellites are widely used for communication purposes but present unique challenges when utilized for navigation. Write a short essay (500–1000 words) discussing:
 
 The difficulties and challenges of using LEO communication satellites for GNSS navigation.
 
-## Task 3: 
-## Task 4: 
-## Task 5: 
+## Task 5: GNSS Remote Sensing
+GNSS is not only used for positioning and navigation but also has significant applications in remote sensing. Write a short essay (500–1000 words) discussing the impact of GNSS in remote sensing. Please select one of the following topics covered in the lecture to discuss:
+
+GNSS Reflectometry (GNSS-R)
+GNSS Interferometric Reflectometry (GNSS-IR)
+GNSS Radio Occultation (GNSS-RO)
+Ionosphere mapping based GNSS ground station
+GNSS seismology
+
