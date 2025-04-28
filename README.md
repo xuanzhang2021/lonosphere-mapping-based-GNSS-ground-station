@@ -3,13 +3,19 @@
 Global Navigation Satellite Systems (GNSS) have become indispensable for smartphone navigation, enabling applications from ride-hailing to location-based services. However, achieving high accuracy in diverse environments remains challenging. This essay evaluates four advanced GNSS techniques—Differential GNSS (DGNSS), Real-Time Kinematic (RTK), Precise Point Positioning (PPP), and PPP-RTK—highlighting their pros and cons for smartphone use.
 
 ### Differential GNSS (DGNSS)
+
+DGNSS is a technique that improves the accuracy of GNSS by using a network of fixed ground-based reference stations. These stations receive GNSS signals and calculate corrections based on known positions, which are then transmitted to the user's receiver to correct its position.
+
 Pros:
-DGNSS improves upon standalone GNSS by using a fixed base station to broadcast error corrections (e.g., atmospheric delays, satellite clock errors) to nearby receivers. This reduces position errors to meter-level accuracy (1–3 meters), sufficient for most consumer apps. Its simplicity and reliance on existing infrastructure, such as Satellite-Based Augmentation Systems (SBAS) like WAAS, make it cost-effective and widely accessible.
+DGNSS improves upon standalone GNSS by using a fixed base station to broadcast error corrections (e.g., atmospheric delays, satellite clock errors) to nearby receivers. This _reduces position errors_ to meter-level accuracy (1–3 meters), sufficient for most consumer apps. Its simplicity and reliance on existing infrastructure, such as Satellite-Based Augmentation Systems (SBAS) like WAAS, make it _cost-effective_ and _widely accessible_.
 
 Cons:
 Accuracy diminishes with distance from the base station (typically <100 km). Coverage gaps occur in remote areas without base stations. Additionally, smartphones may lack dedicated hardware to receive traditional DGNSS signals (e.g., radio beacons), often relying on internet-based corrections, which introduces latency and connectivity dependency.
 
 ### Real-Time Kinematic (RTK)
+
+RTK is a technique that provides high-precision positioning by using carrier phase measurements of the GNSS signals. It requires a base station and a rover, with the base station sending corrections to the rover in real-time.
+
 Pros:
 RTK leverages carrier-phase measurements and a nearby base station (<20 km) to achieve centimeter-level accuracy in real time. This precision benefits applications like augmented reality and drone navigation. Modern smartphones with dual-frequency GNSS chips (e.g., GPS L5, Galileo E5) can now support RTK, enhancing their utility.
 
@@ -17,6 +23,9 @@ Cons:
 RTK’s reliance on short baselines limits coverage to areas with dense base station networks. Urban canyons and obstructions cause signal multipath, degrading accuracy. Maintaining a stable data connection for corrections is challenging in low-coverage zones, and deploying base stations is infrastructure-intensive, hindering scalability.
 
 ### Precise Point Positioning (PPP)
+
+PPP is a GNSS technique that provides precise positioning using a single receiver by applying corrections for satellite clock and orbit errors, atmospheric delays, and other factors.
+
 Pros:
 PPP eliminates the need for base stations by using precise satellite orbit and clock data, often accessed via the internet. It offers global coverage and decimeter- to centimeter-level accuracy after a convergence period (~30 minutes). This makes PPP ideal for regions lacking ground infrastructure.
 
@@ -24,6 +33,9 @@ Cons:
 Long convergence times frustrate real-time use cases like turn-by-turn navigation. Computational demands for processing precise data strain smartphone batteries. PPP also requires uninterrupted internet access, which is unreliable in remote or congested areas.
 
 ### PPP-RTK
+
+PPP-RTK combines elements of both PPP and RTK, using precise satellite orbit and clock data along with local corrections to achieve high accuracy with faster convergence times.
+
 Pros:
 PPP-RTK merges PPP’s global corrections with RTK’s rapid convergence. By integrating network-derived atmospheric models, it achieves centimeter accuracy within minutes, even without nearby base stations. This hybrid approach is scalable, relying on regional or global correction services (e.g., commercial networks like Trimble RTX).
 
