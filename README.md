@@ -1,5 +1,5 @@
 # lonosphere-mapping-based-GNSS-ground-station
-## Task 1 Comparing GNSS Techniques for Smartphone Navigation: DGNSS, RTK, PPP, and PPP-RTK
+## Task 1: Comparing GNSS Techniques for Smartphone Navigation: DGNSS, RTK, PPP, and PPP-RTK
 Global Navigation Satellite Systems (GNSS) have become indispensable for smartphone navigation, enabling applications from ride-hailing to location-based services. However, achieving high accuracy in diverse environments remains challenging. This essay evaluates four advanced GNSS techniques—Differential GNSS (DGNSS), Real-Time Kinematic (RTK), Precise Point Positioning (PPP), and PPP-RTK—highlighting their pros and cons for smartphone use.
 
 ### Differential GNSS (DGNSS)
@@ -38,7 +38,7 @@ Cost and Infrastructure: RTK’s base stations are expensive to deploy, while PP
 ### Conclusion
 For current smartphone navigation, DGNSS and PPP strike a balance between accuracy and accessibility, though they lag in precision. RTK excels in specialized, high-accuracy scenarios but is constrained by infrastructure. PPP-RTK emerges as the most promising future technique, blending global coverage with rapid convergence, contingent on broader correction networks and enhanced smartphone capabilities. As dual-frequency GNSS adoption grows and 5G connectivity expands, PPP-RTK could redefine mobile navigation, marrying high accuracy with scalability for mainstream use.
 
-## Task 2
-## Task 3
-## Task 4
-## Task 5
+## Task 2:
+## Task 3:
+## Task 4:
+## Task 5:
