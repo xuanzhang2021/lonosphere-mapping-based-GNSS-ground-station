@@ -75,7 +75,12 @@ https://genai.polyu.edu.hk/GPT4O
 
 https://poe.com/
 
-## Task 2: 
+## Task 2: LEO Satellites for Navigation
+
+Low Earth Orbit (LEO) satellites are widely used for communication purposes but present unique challenges when utilized for navigation. Write a short essay (500–1000 words) discussing:
+
+The difficulties and challenges of using LEO communication satellites for GNSS navigation.
+
 ## Task 3: 
 ## Task 4: 
 ## Task 5: 
