@@ -45,8 +45,11 @@ Cons:
 ### Smartphone-Specific Considerations
 
 **Hardware**: Newer smartphones support multi-frequency GNSS, enabling RTK and PPP-RTK. However, processing PPP corrections may drain batteries faster.
+
 **Connectivity**: RTK and PPP-RTK require stable data links, posing challenges in rural or data-congested areas. DGNSS and PPP are more forgiving but depend on correction availability.
+
 **Environment**: Urban areas degrade RTK performance due to multipath, whereas PPP and PPP-RTK are less affected but suffer from signal blockages.
+
 **Cost and Infrastructure**: RTK’s base stations are expensive to deploy, while PPP-RTK’s viability hinges on expanding correction services. DGNSS and PPP leverage existing systems, offering lower barriers.
 
 ### Conclusion
