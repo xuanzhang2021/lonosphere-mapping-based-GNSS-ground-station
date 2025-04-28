@@ -56,7 +56,7 @@ Cons:
 
 | Technique   | Accuracy   | Coverage   | Real-Time Capability | Hardware Requirements| Suitability for Smartphones| 
 |-----------|-----------|-----------|-----------|-----------|-----------|
-| DGNSS	     | Sub-meter    | Limited to station range    | Moderate| Standard GNSS receiver| High for general navigation|
+| DGNSS	|Centimeter | Sub-meter | Limited to station range | Moderate| Standard GNSS receiver| High for general navigation|
 | RTK    | Limited to base station networks     | High    |Dual-frequency receiver| Low for current smartphone hardware| 
 |PPP | Decimeter to sub-meter| Global| 	Low| Dual-frequency receiver| Moderate for static or low-dynamic uses|
 |PPP-RTK |Centimeter | Global with regional augmentation |High |Dual-frequency receiver | Promising but currently limited |
