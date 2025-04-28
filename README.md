@@ -52,6 +52,16 @@ Cons:
 
 **Cost and Infrastructure**: RTK’s base stations are expensive to deploy, while PPP-RTK’s viability hinges on expanding correction services. DGNSS and PPP leverage existing systems, offering lower barriers.
 
+### Comparison Table
+
+| Technique   | Accuracy   | Coverage   | Real-Time Capability | Hardware Requirements| Suitability for Smartphones| 
+|-----------|-----------|-----------|-----------|-----------|-----------|
+| DGNSS	     | Sub-meter    | Limited to station range    | Moderate| Standard GNSS receiver| High for general navigation|
+| RTK    | Limited to base station networks     | High    |Dual-frequency receiver| Low for current smartphone hardware| 
+|PPP | Decimeter to sub-meter| Global| 	Low| Dual-frequency receiver| Moderate for static or low-dynamic uses|
+|PPP-RTK |Centimeter | Global with regional augmentation |High |Dual-frequency receiver | Promising but currently limited |
+
+
 ### Conclusion
 For current smartphone navigation, DGNSS and PPP strike a balance between accuracy and accessibility, though they lag in precision. RTK excels in specialized, high-accuracy scenarios but is constrained by infrastructure. PPP-RTK emerges as the most promising future technique, blending global coverage with rapid convergence, contingent on broader correction networks and enhanced smartphone capabilities. As dual-frequency GNSS adoption grows and 5G connectivity expands, PPP-RTK could redefine mobile navigation, marrying high accuracy with scalability for mainstream use.
 
