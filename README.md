@@ -173,13 +173,13 @@ $$
 **4.1 Vertical Protection Level (VPL)**
 
 $$
-\text{VPL} = \max_i (\text{Vslope}_i \cdot T) + k(P_{\text{MD}}) \sigma_V
+\text{VPL} = \max_i (Vslope_i \cdot T) + k(P_{\text{MD}}) \sigma_V
 $$
 
 - **Vertical Slope**:
 
 $$
-\text{Vslope} = \frac{K_{3,i} \sigma_i}{\sqrt{1 - P_{ii}}}
+Vslope_i = \frac{K_{3,i} \sigma_i}{\sqrt{1 - P_{ii}}}
 $$
 
   - $K_{3,i}$: 3rd row of the weighted least-squares matrix $\mathbf{K} = (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \mathbf{G}^T \mathbf{W}$.  
