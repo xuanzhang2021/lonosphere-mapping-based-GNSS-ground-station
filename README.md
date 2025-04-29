@@ -152,6 +152,50 @@ GNSS Radio Occultation (GNSS-RO)
 Ionosphere mapping based GNSS ground station
 GNSS seismology
 
+Here is the essay.
+
+Global Navigation Satellite Systems (GNSS), initially designed for positioning and navigation, have evolved into versatile tools for Earth observation. Among their emerging applications, GNSS Reflectometry (GNSS-R) stands out as a groundbreaking technique that repurposes reflected GNSS signals to monitor terrestrial and oceanic surfaces. This essay examines the transformative role of GNSS-R in remote sensing, focusing on its principles, applications in environmental monitoring, and contributions to climate science.
+
+### Principles of GNSS Reflectometry
+GNSS-R leverages signals from navigation satellites (e.g., GPS, Galileo) that reflect off Earth’s surface and are captured by specialized receivers. Unlike conventional remote sensing systems that rely on dedicated transmitters, GNSS-R operates passively, utilizing the following signal components:
+
+1. **Direct Signal:** Line-of-sight transmission from the satellite.
+2. **Reflected Signal:** Scattered off land, ocean, or ice surfaces.
+
+By analyzing the interference patterns between direct and reflected signals, GNSS-R retrieves geophysical parameters through:
+
+1. **Delay-Doppler Maps (DDMs):** Capturing time delays and frequency shifts caused by surface roughness.
+2. **Polarimetric Analysis:** Measuring polarization changes (e.g., right-hand to left-hand circular polarization) to infer surface dielectric properties.
+3. **Signal-to-Noise Ratio (SNR):** Correlating SNR fluctuations with surface characteristics like soil moisture.
+   
+Key advantages over active radar systems:
+| Parameter   | GNSS-R   | Synthetic Aperture Radar (SAR)   | 
+|-----------|-----------|-----------|
+| Cost	 | Low (no transmitter) | High (dedicated platform) |
+| Revisit time | Minutes (multi-constellation)| Days to weeks| 
+|Spatial resolution | 0.5–25 km| Global| 	1–100 m|
+|Power consumption|<10 W | >500 W |
+
+
+### Guidelines on Using AI
+
+#### Model: 
+
+1. ChatGPT 4o mini
+2. deepseek-R1
+
+#### Prompt:
+
+Please give me the pros and cons of different differential GNSS for smartphone positioning.  
+
+#### Comment: 
+It’s free and great for reasoning and answering questions. 
+
+#### Chatroom Link (if any): 
+
+https://genai.polyu.edu.hk/GPT4O
+
+https://poe.com/chat/i6xwfy1ghvua1fc41u
 
 
 
