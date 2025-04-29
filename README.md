@@ -88,6 +88,111 @@ https://poe.com/
 ## Task 2: 
 
 ## Task 3: 
+### Introduction
+
+Global Navigation Satellite Systems (GNSS) have become indispensable for modern positioning, navigation, and timing (PNT) applications, ranging from aviation to autonomous vehicles. However, the reliability of GNSS measurements is frequently compromised by signal anomalies such as satellite clock failures, atmospheric disturbances, or multipath effects in urban environments. These errors, if undetected, can lead to hazardous positioning inaccuracies—a critical concern for safety-of-life systems like aircraft landing or surgical drone operations. To address this challenge, Receiver Autonomous Integrity Monitoring (RAIM) has emerged as a foundational technology for ensuring GNSS data integrity. By leveraging redundant satellite measurements and statistical algorithms, RAIM autonomously detects and isolates faulty signals in real time, enabling receivers to exclude corrupted data and maintain robust positioning performance. Initially standardized for aviation in the 1990s, RAIM has evolved to incorporate advanced variants such as weighted RAIM and multi-constellation RAIM, achieving fault detection probabilities exceeding 99.9% in recent implementations. This paper explores the principles, advancements, and practical limitations of RAIM, highlighting its pivotal role in bridging the gap between GNSS ubiquity and operational safety.
+
+### Methodology
+
+#### 1. Measurement Model & Weighted Least-Squares Solution  
+
+##### **Linearized Pseudorange Observation Equation**  
+\[
+\mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
+\]  
+- \(\mathbf{y} \in \mathbb{R}^N\): Pseudorange residual vector (observed – computed).  
+- \(\mathbf{G} \in \mathbb{R}^{N \times 4}\): Geometry matrix (satellite line-of-sight vectors and clock terms).  
+- \(\mathbf{x} \in \mathbb{R}^4\): State vector (3D position error + receiver clock bias).  
+- \(\boldsymbol{\epsilon} \in \mathbb{R}^N\): Error vector (multipath, ionospheric delay, etc.).  
+
+##### **Weighted Least-Squares Estimate**  
+\[
+\hat{\mathbf{x}} = \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W} \mathbf{y}
+\]  
+- \(\mathbf{W} = \text{diag}(w_1, w_2, \dots, w_N)\): Weight matrix with \(w_i = 1/\sigma_i^2\).  
+- \(\sigma_i^2\): Pseudorange error variance for satellite \(i\), computed as:  
+\[
+\sigma_i^2 = \sigma_{\text{UDRE},i}^2 + F^2(\text{Elev}_i) \sigma_{\text{UIVE},i}^2 + \sigma_{\text{SNR},i}^2 + \frac{\sigma_{m45}^2}{\tan^2(\text{Elev}_i)} + \frac{\sigma_{\text{trv}}^2}{\sin^2(\text{Elev}_i)}
+\]  
+  - \(\sigma_{\text{UDRE}}\): Satellite clock/ephemeris error variance.  
+  - \(\sigma_{\text{UIVE}}\): Ionospheric vertical delay variance.  
+  - \(F(\text{Elev}_i)\): Ionospheric obliquity factor.  
+  - \(\sigma_{m45}\): Multipath error variance at 45° elevation.  
+  - \(\sigma_{\text{trv}}\): Tropospheric vertical delay variance.  
+
+---
+
+#### 2. Residuals & Test Statistic  
+
+##### **Residual Vector**  
+\[
+\hat{\boldsymbol{\epsilon}} = \mathbf{y} - \mathbf{G} \hat{\mathbf{x}} = (\mathbf{I} - \mathbf{P}) \mathbf{y}, \quad \mathbf{P} = \mathbf{G} \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W}
+\]  
+- \(\mathbf{P}\): Projection matrix.  
+
+##### **Weighted Sum of Squared Errors (WSSE)**  
+\[
+\text{WSSE} = \hat{\boldsymbol{\epsilon}}^T \mathbf{W} \hat{\boldsymbol{\epsilon}} = \mathbf{y}^T \mathbf{W} (\mathbf{I} - \mathbf{P}) \mathbf{y}
+\]  
+- **Test statistic**, following a chi-square distribution: \(\text{WSSE} \sim \chi^2(N-4)\).  
+
+---
+
+#### 3. Detection Threshold & False Alarm Probability  
+
+##### **Threshold \(T\)**  
+Derived from the inverse chi-square cumulative distribution function:  
+\[
+P_{\text{FA}} = 1 - \int_0^{T} \frac{1}{2^{\frac{\nu}{2}} \Gamma(\frac{\nu}{2})} e^{-s/2} s^{\frac{\nu}{2}-1} ds
+\]  
+- \(\nu = N-4\): Degrees of freedom.  
+- \(P_{\text{FA}}\): False alarm probability (typically \(10^{-5}\)).  
+- Example thresholds:  
+
+| \(N\) | \(P_{\text{FA}}=10^{-5}\) | \(P_{\text{FA}}=10^{-6}\) | \(\cdots\) |
+|------|--------------------------|--------------------------|-----------|
+| 5    | 4.417                    | 5.327                    | \(\cdots\) |
+| 6    | 4.798                    | 5.678                    | \(\cdots\) |
+| \(\vdots\) | \(\vdots\)          | \(\vdots\)          | \(\ddots\) |
+
+---
+
+#### 4. Protection Level Calculation  
+
+##### **Vertical Protection Level (VPL)**  
+\[
+\text{VPL} = \max_i \left( \text{Vslope}_i \cdot T \right) + k(P_{\text{MD}}) \sigma_V
+\]  
+- **Vertical Slope**:  
+\[
+\text{Vslope}_i = \frac{K_{3,i} \sigma_i}{\sqrt{1 - P_{ii}}}
+\]  
+  - \(K_{3,i}\): 3rd row of the weighted least-squares matrix \(\mathbf{K} = (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \mathbf{G}^T \mathbf{W}\).  
+  - \(P_{ii}\): Diagonal elements of \(\mathbf{P}\).  
+- **Vertical Position Error STD**:  
+\[
+\sigma_V = \sqrt{\left[ (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \right]_{3,3}}
+\]  
+- \(k(P_{\text{MD}})\): Quantile for missed detection probability (e.g., \(k=3.09\) for \(P_{\text{MD}}=10^{-3}\)).  
+
+---
+
+#### 5. Algorithm Workflow  
+
+1. **Preprocessing**  
+   - Mask satellites below elevation cutoff (e.g., 5°).  
+   - Compute \(\mathbf{W}\) based on elevation-dependent variances.  
+
+2. **Weighted Position Solution**  
+\[
+\hat{\mathbf{x}} = \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W} \mathbf{y}
+\]  
+
+3. **Integrity Monitoring**  
+   - If \(\text{WSSE} > T\), trigger alarm.  
+   - Compute \(\text{VPL}\). If \(\text{VPL} > \text{VIL}\) (e.g., 19 m for aviation), declare service unavailable.
+  
+
 
 ## Task 4: LEO Satellites for Navigation
 
