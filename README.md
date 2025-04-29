@@ -173,7 +173,7 @@ $$
 **4.1 Vertical Protection Level (VPL)**
 
 $$
-\text{VPL} = \max_i \left( \text{Vslope}_i \cdot T \right) + k(P_{\text{MD}}) \sigma_V
+\text{VPL} = \max_i (\text{Vslope}_i \cdot T) + k(P_{\text{MD}}) \sigma_V
 $$
 
 - **Vertical Slope**:
