@@ -87,6 +87,8 @@ https://poe.com/
 
 ## Task 2: 
 
+### Results and Analysis
+
 ## Task 3: 
 ### Introduction
 
@@ -209,6 +211,7 @@ $$
    - If $\text{WSSE} > T$, trigger alarm.  
    - Compute $\text{VPL}$. If $\text{VPL} > \text{VIL}$ (e.g., 19 m for aviation), declare service unavailable.
   
+### Results and Analysis
 
 
 ## Task 4: LEO Satellites for Navigation
