@@ -94,7 +94,7 @@ Global Navigation Satellite Systems (GNSS) have become indispensable for modern 
 
 ### Methodology
 $$
-\hat{x} = (G^T W G)^{-1} G^T W y
+\mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
 $$
 
 #### 1. Measurement Model & Weighted Least-Squares Solution  
