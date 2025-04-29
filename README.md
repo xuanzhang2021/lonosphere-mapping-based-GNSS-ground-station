@@ -117,7 +117,7 @@ $$
 - $\sigma_i^2$: Pseudorange error variance for satellite $i$, computed as:
   
 $$
-\sigma_i^2 = \sigma_{UDRE,i}^2 + F^2(\text{Elev}_i) \sigma_{UIVE,i}^2 + \sigma_{SNR,i}^2 + \frac{\sigma_{m45}^2}{\tan^2(Elev_i)} + \frac{\sigma_{trv}^2}{\sin^2(Elev_i)}
+\sigma_i^2 = \sigma_{\text{UDRE},i}^2 + F^2(\text{Elev}_i)\sigma_{\text{UIVE},i}^2 + \sigma_{\text{SNR},i}^2 + \frac{\sigma_{m45}^2}{\tan^2(\text{Elev}_i)} + \frac{\sigma_{\text{trv}}^2}{\sin^2(\text{Elev}_i)}
 $$
    
   - $\sigma_{\text{UDRE}}$: Satellite clock/ephemeris error variance.  
@@ -181,7 +181,7 @@ $$
 $$
 \text{Vslope}_i = \frac{K_{3,i} \sigma_i}{\sqrt{1 - P_{ii}}}
 $$
-  
+
   - $K_{3,i}$: 3rd row of the weighted least-squares matrix $\mathbf{K} = (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \mathbf{G}^T \mathbf{W}$.  
   - $P_{ii}$: Diagonal elements of $\mathbf{P}$.
 
