@@ -115,7 +115,7 @@ $$
 
 - $\mathbf{W} = \text{diag}(w_1, w_2, \dots, w_N)$: Weight matrix with $w_i = 1/\sigma_i^2$.  
 - $\sigma_i^2$: Pseudorange error variance for satellite $i$, computed as:
-  
+
 $$
 \sigma_i^2 = \sigma_{\text{UDRE},i}^2 + F^2(\text{Elev}_i)\sigma_{\text{UIVE},i}^2
 $$
