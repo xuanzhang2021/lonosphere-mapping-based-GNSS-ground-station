@@ -93,15 +93,12 @@ https://poe.com/
 Global Navigation Satellite Systems (GNSS) have become indispensable for modern positioning, navigation, and timing (PNT) applications, ranging from aviation to autonomous vehicles. However, the reliability of GNSS measurements is frequently compromised by signal anomalies such as satellite clock failures, atmospheric disturbances, or multipath effects in urban environments. These errors, if undetected, can lead to hazardous positioning inaccuracies—a critical concern for safety-of-life systems like aircraft landing or surgical drone operations. To address this challenge, Receiver Autonomous Integrity Monitoring (RAIM) has emerged as a foundational technology for ensuring GNSS data integrity. By leveraging redundant satellite measurements and statistical algorithms, RAIM autonomously detects and isolates faulty signals in real time, enabling receivers to exclude corrupted data and maintain robust positioning performance. Initially standardized for aviation in the 1990s, RAIM has evolved to incorporate advanced variants such as weighted RAIM and multi-constellation RAIM, achieving fault detection probabilities exceeding 99.9% in recent implementations. This paper explores the principles, advancements, and practical limitations of RAIM, highlighting its pivotal role in bridging the gap between GNSS ubiquity and operational safety.
 
 ### Methodology
-$$
-\mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
-$$
 
 #### 1. Measurement Model & Weighted Least-Squares Solution  
 
 **1.1  Linearized Pseudorange Observation Equation**  
 $$
-\mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
+y = Gx + \epsilon
 $$ 
 - \(\mathbf{y} \in \mathbb{R}^N\): Pseudorange residual vector (observed – computed).  
 - \(\mathbf{G} \in \mathbb{R}^{N \times 4}\): Geometry matrix (satellite line-of-sight vectors and clock terms).  
