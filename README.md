@@ -99,19 +99,13 @@ Global Navigation Satellite Systems (GNSS) have become indispensable for modern 
 **1.1  Linearized Pseudorange Observation Equation**
 
 $$
-\hat{x} = (G^T W G)^{-1} G^T W y
-$$
-
-The equation is $\hat{x} = (G^T W G)^{-1} G^T W y$.
-
-$$
 y = Gx + \epsilon
 $$ 
 
-- \(\mathbf{y} \in \mathbb{R}^N\): Pseudorange residual vector (observed – computed).  
-- \(\mathbf{G} \in \mathbb{R}^{N \times 4}\): Geometry matrix (satellite line-of-sight vectors and clock terms).  
-- \(\mathbf{x} \in \mathbb{R}^4\): State vector (3D position error + receiver clock bias).  
-- \(\boldsymbol{\epsilon} \in \mathbb{R}^N\): Error vector (multipath, ionospheric delay, etc.).  
+- $y \in R^N$: Pseudorange residual vector (observed – computed).  
+- $G \in R^{N \times 4}$: Geometry matrix (satellite line-of-sight vectors and clock terms).  
+- $x \in R}^4$: State vector (3D position error + receiver clock bias).  
+- $\epsilon \in R^N$: Error vector (multipath, ionospheric delay, etc.).  
 
 **1.2 Weighted Least-Squares Estimate**  
 
