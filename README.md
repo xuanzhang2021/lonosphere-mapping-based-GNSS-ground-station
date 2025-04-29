@@ -100,23 +100,23 @@ $$
 #### 1. Measurement Model & Weighted Least-Squares Solution  
 
 ##### **Linearized Pseudorange Observation Equation**  
-\[
+$$
 \mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
-\]  
+$$ 
 - \(\mathbf{y} \in \mathbb{R}^N\): Pseudorange residual vector (observed – computed).  
 - \(\mathbf{G} \in \mathbb{R}^{N \times 4}\): Geometry matrix (satellite line-of-sight vectors and clock terms).  
 - \(\mathbf{x} \in \mathbb{R}^4\): State vector (3D position error + receiver clock bias).  
 - \(\boldsymbol{\epsilon} \in \mathbb{R}^N\): Error vector (multipath, ionospheric delay, etc.).  
 
 ##### **Weighted Least-Squares Estimate**  
-\[
+$$
 \hat{\mathbf{x}} = \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W} \mathbf{y}
-\]  
+$$ 
 - \(\mathbf{W} = \text{diag}(w_1, w_2, \dots, w_N)\): Weight matrix with \(w_i = 1/\sigma_i^2\).  
 - \(\sigma_i^2\): Pseudorange error variance for satellite \(i\), computed as:  
-\[
+$$
 \sigma_i^2 = \sigma_{\text{UDRE},i}^2 + F^2(\text{Elev}_i) \sigma_{\text{UIVE},i}^2 + \sigma_{\text{SNR},i}^2 + \frac{\sigma_{m45}^2}{\tan^2(\text{Elev}_i)} + \frac{\sigma_{\text{trv}}^2}{\sin^2(\text{Elev}_i)}
-\]  
+$$  
   - \(\sigma_{\text{UDRE}}\): Satellite clock/ephemeris error variance.  
   - \(\sigma_{\text{UIVE}}\): Ionospheric vertical delay variance.  
   - \(F(\text{Elev}_i)\): Ionospheric obliquity factor.  
@@ -128,15 +128,15 @@ $$
 #### 2. Residuals & Test Statistic  
 
 ##### **Residual Vector**  
-\[
+$$
 \hat{\boldsymbol{\epsilon}} = \mathbf{y} - \mathbf{G} \hat{\mathbf{x}} = (\mathbf{I} - \mathbf{P}) \mathbf{y}, \quad \mathbf{P} = \mathbf{G} \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W}
-\]  
+$$ 
 - \(\mathbf{P}\): Projection matrix.  
 
 ##### **Weighted Sum of Squared Errors (WSSE)**  
-\[
+$$
 \text{WSSE} = \hat{\boldsymbol{\epsilon}}^T \mathbf{W} \hat{\boldsymbol{\epsilon}} = \mathbf{y}^T \mathbf{W} (\mathbf{I} - \mathbf{P}) \mathbf{y}
-\]  
+$$  
 - **Test statistic**, following a chi-square distribution: \(\text{WSSE} \sim \chi^2(N-4)\).  
 
 ---
@@ -145,9 +145,9 @@ $$
 
 ##### **Threshold \(T\)**  
 Derived from the inverse chi-square cumulative distribution function:  
-\[
+$$
 P_{\text{FA}} = 1 - \int_0^{T} \frac{1}{2^{\frac{\nu}{2}} \Gamma(\frac{\nu}{2})} e^{-s/2} s^{\frac{\nu}{2}-1} ds
-\]  
+$$ 
 - \(\nu = N-4\): Degrees of freedom.  
 - \(P_{\text{FA}}\): False alarm probability (typically \(10^{-5}\)).  
 - Example thresholds:  
@@ -163,19 +163,19 @@ P_{\text{FA}} = 1 - \int_0^{T} \frac{1}{2^{\frac{\nu}{2}} \Gamma(\frac{\nu}{2})}
 #### 4. Protection Level Calculation  
 
 ##### **Vertical Protection Level (VPL)**  
-\[
+$$
 \text{VPL} = \max_i \left( \text{Vslope}_i \cdot T \right) + k(P_{\text{MD}}) \sigma_V
-\]  
+$$  
 - **Vertical Slope**:  
-\[
+$$
 \text{Vslope}_i = \frac{K_{3,i} \sigma_i}{\sqrt{1 - P_{ii}}}
-\]  
+$$  
   - \(K_{3,i}\): 3rd row of the weighted least-squares matrix \(\mathbf{K} = (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \mathbf{G}^T \mathbf{W}\).  
   - \(P_{ii}\): Diagonal elements of \(\mathbf{P}\).  
 - **Vertical Position Error STD**:  
-\[
+$$
 \sigma_V = \sqrt{\left[ (\mathbf{G}^T \mathbf{W} \mathbf{G})^{-1} \right]_{3,3}}
-\]  
+$$  
 - \(k(P_{\text{MD}})\): Quantile for missed detection probability (e.g., \(k=3.09\) for \(P_{\text{MD}}=10^{-3}\)).  
 
 ---
@@ -187,9 +187,9 @@ P_{\text{FA}} = 1 - \int_0^{T} \frac{1}{2^{\frac{\nu}{2}} \Gamma(\frac{\nu}{2})}
    - Compute \(\mathbf{W}\) based on elevation-dependent variances.  
 
 2. **Weighted Position Solution**  
-\[
+$$
 \hat{\mathbf{x}} = \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W} \mathbf{y}
-\]  
+$$  
 
 3. **Integrity Monitoring**  
    - If \(\text{WSSE} > T\), trigger alarm.  
