@@ -265,8 +265,7 @@ It’s free and great for reasoning and answering questions.
 #### Chatroom Link (if any): 
 
 https://genai.polyu.edu.hk/GPT4O
-
-https://poe.com/chat/i6xwfy1ghvua1fc41u
+https://poe.com/s/d9GysKROvHWdYbnB1ybf
 
 
 
