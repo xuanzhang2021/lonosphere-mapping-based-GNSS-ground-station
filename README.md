@@ -96,7 +96,11 @@ Global Navigation Satellite Systems (GNSS) have become indispensable for modern 
 
 #### 1. Measurement Model & Weighted Least-Squares Solution  
 
-**1.1  Linearized Pseudorange Observation Equation**  
+**1.1  Linearized Pseudorange Observation Equation**
+$$
+\hat{x} = (G^T W G)^{-1} G^T W y
+$$
+The equation is $\hat{x} = (G^T W G)^{-1} G^T W y$.
 $$
 y = Gx + \epsilon
 $$ 
