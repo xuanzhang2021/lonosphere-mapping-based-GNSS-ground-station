@@ -99,7 +99,7 @@ $$
 
 #### 1. Measurement Model & Weighted Least-Squares Solution  
 
-##### **Linearized Pseudorange Observation Equation**  
+**1.1  Linearized Pseudorange Observation Equation**  
 $$
 \mathbf{y} = \mathbf{G} \mathbf{x} + \boldsymbol{\epsilon}
 $$ 
@@ -108,7 +108,7 @@ $$
 - \(\mathbf{x} \in \mathbb{R}^4\): State vector (3D position error + receiver clock bias).  
 - \(\boldsymbol{\epsilon} \in \mathbb{R}^N\): Error vector (multipath, ionospheric delay, etc.).  
 
-##### **Weighted Least-Squares Estimate**  
+**1.2 Weighted Least-Squares Estimate**  
 $$
 \hat{\mathbf{x}} = \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W} \mathbf{y}
 $$ 
@@ -127,13 +127,13 @@ $$
 
 #### 2. Residuals & Test Statistic  
 
-##### **Residual Vector**  
+**2.1 Residual Vector**  
 $$
 \hat{\boldsymbol{\epsilon}} = \mathbf{y} - \mathbf{G} \hat{\mathbf{x}} = (\mathbf{I} - \mathbf{P}) \mathbf{y}, \quad \mathbf{P} = \mathbf{G} \left( \mathbf{G}^T \mathbf{W} \mathbf{G} \right)^{-1} \mathbf{G}^T \mathbf{W}
 $$ 
 - \(\mathbf{P}\): Projection matrix.  
 
-##### **Weighted Sum of Squared Errors (WSSE)**  
+**2.2 Weighted Sum of Squared Errors (WSSE)**  
 $$
 \text{WSSE} = \hat{\boldsymbol{\epsilon}}^T \mathbf{W} \hat{\boldsymbol{\epsilon}} = \mathbf{y}^T \mathbf{W} (\mathbf{I} - \mathbf{P}) \mathbf{y}
 $$  
@@ -143,7 +143,7 @@ $$
 
 #### 3. Detection Threshold & False Alarm Probability  
 
-##### **Threshold \(T\)**  
+**3.1 Threshold \(T\)**  
 Derived from the inverse chi-square cumulative distribution function:  
 $$
 P_{\text{FA}} = 1 - \int_0^{T} \frac{1}{2^{\frac{\nu}{2}} \Gamma(\frac{\nu}{2})} e^{-s/2} s^{\frac{\nu}{2}-1} ds
@@ -162,7 +162,7 @@ $$
 
 #### 4. Protection Level Calculation  
 
-##### **Vertical Protection Level (VPL)**  
+**4.1 Vertical Protection Level (VPL)**  
 $$
 \text{VPL} = \max_i \left( \text{Vslope}_i \cdot T \right) + k(P_{\text{MD}}) \sigma_V
 $$  
