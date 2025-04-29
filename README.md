@@ -181,64 +181,69 @@ Key advantages over active radar systems:
 
 GNSS-R has revolutionized sea state and wind speed retrieval:
 
-Wind speed: Cyclone Global Navigation Satellite System (CYGNSS) data correlate with buoy measurements (RMSE: 1.5 m/s).
-Wave height: DDM-derived significant wave height accuracy: ±0.5 m in <10 m seas.
+1. **Wind speed:** Cyclone Global Navigation Satellite System (CYGNSS) data correlate with buoy measurements (RMSE: 1.5 m/s).
+2. **Wave height:** DDM-derived significant wave height accuracy: ±0.5 m in <10 m seas.
+
 Oil spill detection: Polarization ratio changes identify oil slicks with 85% accuracy.
 
 #### Land Surface Characterization
 
-Soil moisture: SNR-based retrievals achieve 4–6% volumetric accuracy, comparable to SMAP satellite data.
-Snow depth: Phase interference methods resolve depth changes at 2 cm precision.
-Permafrost monitoring: Permittivity shifts detect active layer thaw with 90% correlation to ground sensors.
+1. **Soil moisture:** SNR-based retrievals achieve 4–6% volumetric accuracy, comparable to SMAP satellite data.
+2. **Snow depth:** Phase interference methods resolve depth changes at 2 cm precision.
+3. **Permafrost monitoring:** Permittivity shifts detect active layer thaw with 90% correlation to ground sensors.
 
 #### Cryosphere Studies
 
-Sea ice thickness: L-band penetration enables thickness estimation up to 1 m (error: ±0.2 m).
-Glacier melt timing: Daily reflectivity tracks melt onset within 1–2 days of in-situ measurements.
+1. **Sea ice thickness:** L-band penetration enables thickness estimation up to 1 m (error: ±0.2 m).
+2. **Glacier melt timing:** Daily reflectivity tracks melt onset within 1–2 days of in-situ measurements.
 
 ### Climate Science Contributions
 #### Carbon Cycle Constraints
 
 GNSS-R improves quantification of key climate variables:
 
-Wetland extent: Maps methane-emitting regions at 10 km resolution (critical for COP28 goals).
-Biomass burning: Ash-covered surfaces reduce reflectivity, correlating with fire radiative power (R²=0.78).
+1. **Wetland extent:** Maps methane-emitting regions at 10 km resolution (critical for COP28 goals).
+2. **Biomass burning:** Ash-covered surfaces reduce reflectivity, correlating with fire radiative power (R²=0.78).
 
 #### Extreme Weather Forecasting
 
-Hurricane intensification: CYGNSS observes wind field asymmetries 24–48 hours before eye formation.
-Flood mapping: Reflectivity drops detect inland water extent within 3 hours of rainfall events.
+1. **Hurricane intensification:** CYGNSS observes wind field asymmetries 24–48 hours before eye formation.
+2. **Flood mapping:** Reflectivity drops detect inland water extent within 3 hours of rainfall events.
 
 #### Sea-Level Rise Mitigation
 
-Coastal erosion: Tracks shoreline changes at 5 m/year precision.
-Saltwater intrusion: Soil dielectric shifts map aquifer salinization boundaries.
+1. **Coastal erosion:** Tracks shoreline changes at 5 m/year precision.
+2. **Saltwater intrusion:** Soil dielectric shifts map aquifer salinization boundaries.
 
 ### Technological Innovations and Missions
 #### Spaceborne Systems
 
-CYGNSS (NASA): 8 microsatellites generating 32,000 daily ocean wind measurements.
-BuFeng-1 (China): Twin satellites achieving 6-hour tropical cyclone revisit times.
-HydroGNSS (ESA): Upcoming mission targeting 5 km resolution soil moisture maps.
+1. **CYGNSS (NASA):** 8 microsatellites generating 32,000 daily ocean wind measurements.
+2. **BuFeng-1 (China):** Twin satellites achieving 6-hour tropical cyclone revisit times.
+3. **HydroGNSS (ESA):** Upcoming mission targeting 5 km resolution soil moisture maps.
 
 #### Ground-Based Networks
-International GNSS Service (IGS): 500+ stations repurposed for reflectometry.
-Smartphone crowdsourcing: Experimental apps collect coastal reflection data from 1 million+ devices.
+
+1. **International GNSS Service (IGS):** 500+ stations repurposed for reflectometry.
+2. **Smartphone crowdsourcing:** Experimental apps collect coastal reflection data from 1 million+ devices.
 
 #### Signal Processing Advances
-Machine learning: Convolutional neural networks (CNNs) classify surface types with 95% accuracy.
-Interferometric GNSS-R: Combines signals from multiple satellites for 100 m resolution imaging.
+
+1. **Machine learning:** Convolutional neural networks (CNNs) classify surface types with 95% accuracy.
+2. **Interferometric GNSS-R:** Combines signals from multiple satellites for 100 m resolution imaging.
 
 ### Challenges and Future Directions
 #### Technical Limitations
-Coarse resolution: Limited by ~20 MHz GNSS bandwidth (vs. 500 MHz in dedicated radars).
-Ionospheric delays: L-band signals suffer 2–10 TECU distortions during geomagnetic storms.
-Multipath interference: Urban environments degrade signal quality by 40–60%.
+
+1. **Coarse resolution:** Limited by ~20 MHz GNSS bandwidth (vs. 500 MHz in dedicated radars).
+2. **Ionospheric delays:** L-band signals suffer 2–10 TECU distortions during geomagnetic storms.
+3. **Multipath interference:** Urban environments degrade signal quality by 40–60%.
 
 #### Emerging Solutions
-Multi-frequency fusion: Combining GPS L5 (1176 MHz) and Galileo E6 (1278 MHz) to mitigate ionospheric errors.
-CubeSat swarms: Plans for 100+ satellite constellations to achieve hourly global coverage.
-6G integration: Leveraging millimeter-wave GNSS signals for sub-50 m resolution.
+
+1. **Multi-frequency fusion:** Combining GPS L5 (1176 MHz) and Galileo E6 (1278 MHz) to mitigate ionospheric errors.
+2. **CubeSat swarms:** Plans for 100+ satellite constellations to achieve hourly global coverage.
+3. **6G integration:** Leveraging millimeter-wave GNSS signals for sub-50 m resolution.
 
 ### Conclusion
 GNSS-R epitomizes the paradigm of "sustainable remote sensing," transforming existing navigation infrastructure into a global environmental monitoring network. With over 140 GNSS satellites currently broadcasting usable signals, the technique provides daily global coverage at less than 1% of traditional Earth observation costs. As processing algorithms harness artificial intelligence and new constellations like Starlink embed reflectometry payloads, GNSS-R is poised to become a cornerstone of the Global Earth Observation System of Systems (GEOSS). By 2030, its fusion with IoT sensors and quantum-enhanced receivers could enable real-time planetary vital sign monitoring—a critical step toward achieving UN Sustainable Development Goals (SDGs) on climate action and life on land.
