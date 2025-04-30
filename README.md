@@ -74,10 +74,10 @@ For current smartphone navigation, DGNSS and PPP strike a balance between accura
 
 #### Prompt:
 
-Please give me the pros and cons of different differential GNSS for smartphone positioning.  
+please write a short essay (500–1000 words) comparing the pros and cons of the techniques (DGNSS, RTK, ppp, ppp-RTK) for smartphone navigation.
 
 #### Comment: 
-It’s free and great for reasoning and answering questions. 
+The answer of AI is attached to in the following weblinks. 
 
 #### Chatroom Link (if any): 
 
@@ -87,7 +87,11 @@ https://poe.com/
 
 ## Task 2: GNSS in Urban Areas
 
+### code explaination
+
+
 ### Results and Analysis
+
 
 ## Task 3: GPS RAIM (Receiver Autonomous Integrity Monitoring)
 ### Introduction
@@ -211,7 +215,11 @@ $$
    - If $\text{WSSE} > T$, trigger alarm.  
    - Compute $\text{VPL}$. If $\text{VPL} > \text{VIL}$ (e.g., 19 m for aviation), declare service unavailable.
   
+### code explaination
+
+
 ### Results and Analysis
+
 
 
 ## Task 4: LEO Satellites for Navigation
@@ -258,10 +266,10 @@ LEO satellites hold transformative potential for GNSS, promising enhanced urban 
 
 #### Prompt:
 
-Please give me the pros and cons of different differential GNSS for smartphone positioning.  
+Please give me the pros and cons of different differential GNSS  for smartphone positioning.  
 
 #### Comment: 
-It’s free and great for reasoning and answering questions. 
+Write a short essay (500–1000 words) discussing the difficulties and challenges of using LEO communication satellites for GNSS navigation.
 
 #### Chatroom Link (if any): 
 
@@ -270,12 +278,6 @@ https://genai.polyu.edu.hk/GPT4O
 https://copilot.cloud.microsoft/?fromCode=cmcv2&redirectId=77295F4909EC4C83B5A26440BF4A94B0&auth=2
 
 ## Task 5: GNSS Remote Sensing
-GNSS is not only used for positioning and navigation but also has significant applications in remote sensing. Write a short essay (500–1000 words) discussing the impact of GNSS in remote sensing. Please select one of the following topics covered in the lecture to discuss:
-GNSS Reflectometry (GNSS-R)
-GNSS Interferometric Reflectometry (GNSS-IR)
-GNSS Radio Occultation (GNSS-RO)
-Ionosphere mapping based GNSS ground station
-GNSS seismology
 
 Here is the essay.
 
@@ -382,10 +384,11 @@ GNSS-R epitomizes the paradigm of "sustainable remote sensing," transforming exi
 
 #### Prompt:
 
-Please give me the pros and cons of different differential GNSS for smartphone positioning.  
+Write a short essay (500–1000 words) discussing the impact of GNSS in remote sensing. Please write around the theme of GNSS Reflectometry (GNSS-R).
+
 
 #### Comment: 
-It’s free and great for reasoning and answering questions. 
+The answer of AI is attached to in the following weblinks.
 
 #### Chatroom Link (if any): 
 
