@@ -98,7 +98,7 @@ The provided skymask can be utilized to identify whether the line-of-sight (LOS)
 This zenith map highlights the relationship between satellite visibility and environmental obstructions, shedding light on key issues in satellite signal reliability and classification:
 
 1. Impact of Obstructions on Signal Reception:
-The map demonstrates how local obstacles, such as buildings or terrain, restrict the visibility of satellites. Satellites outside the visible sky region (defined by the zenith angle boundary) are likely to experience signal blockages, leading to Non-Line-of-Sight (NLOS) conditions. This emphasizes the need to account for environmental factors when designing or analyzing satellite-based positioning systems.
+The map demonstrates how local obstacles, restrict the visibility of satellites. Satellites outside the visible sky region (defined by the zenith angle boundary) are likely to experience signal blockages, leading to Non-Line-of-Sight (NLOS) conditions. This emphasizes the need to account for environmental factors when designing or analyzing satellite-based positioning systems.
 
 2. Classification Accuracy of LOS/NLOS Signals:
 The map helps assess whether satellites are correctly classified as Line-of-Sight (LOS) or Non-Line-of-Sight (NLOS). Misclassifications can occur if the obstruction model (sky mask) or satellite signal quality is poorly understood. Incorrect LOS classification for obstructed satellites can lead to significant positioning errors due to multipath effects or signal degradation.
