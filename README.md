@@ -275,9 +275,9 @@ clkCorrRawP(excluded_idx) = [];
 - Position Integrity Monitoring: The RAIM process ensures that the final position solution is computed using only reliable satellite signals. Faulty measurements are flagged (navSolutions.is_fault) to maintain positioning integrity.
 
 '''
-% %--- Apply position update --------------------------------------------
-        % 
-        %         %%%%%%%%%%%%%%%%%%%%%%% RAIM insert %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--- Apply position update --------------------------------------------
+        
+           %%%%%%%%%%%%%%%%%%%%%%% RAIM insert %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             [is_fault, excluded_idx] = raim_detection(A, navSolutions.omc(:, currMeasNr), diag(C), settings);
 
             if is_fault == 1
@@ -297,7 +297,6 @@ clkCorrRawP(excluded_idx) = [];
                     leastSquarePos(satPositions, clkCorrRawP, settings);
             end
             navSolutions.sdsd(:, currMeasNr) = excluded_idx;
-
 '''
 
 2. 123
