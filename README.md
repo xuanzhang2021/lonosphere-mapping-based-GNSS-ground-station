@@ -305,6 +305,10 @@ clkCorrRawP(excluded_idx) = [];
 
 2. Chi-square detection
 
+The code snippet demonstrates the use of a chi-square-based fault detection mechanism for navigation systems. This method is essential in Receiver Autonomous Integrity Monitoring (RAIM) to identify and mitigate faulty satellite signals.
+
+The threshold is calculated using the chi-square inverse cumulative distribution function (chi2inv), scaled by the variance of measurement errors. This threshold ensures that faults beyond the normal noise level trigger detection. For the given parameters, threshold is about 82.89. The chi-square test compares residual errors (observed minus computed values) with this threshold. If the residuals exceed threshold, the system flags a fault. The PL calculation solves for the error bound ensuring the probability of missed detection (P_md = 1e-7) is satisfied.
+
 ```markdown
 ```matlab
 function [T_threshold,PL] = chi()
@@ -323,6 +327,14 @@ end
 ```
 
 3. computing PL
+
+The second code snippet elaborates on the Protection Level (PL) calculation in the context of weighted least squares (WLS) and integrity monitoring. Here, the PL is derived using satellite geometry, residual errors, and statistical thresholds.
+
+- Weighted Residual Analysis: The weighted sum of squared errors (WSSE) is computed to evaluate the residual consistency `WSSE_sqrt = sqrt(y' * W * (I - P) * y);`.
+- The slope of each satellite's contribution to the protection level is calculated by `SLPOE = sqrt((S(1,:).^2 + S(2,:).^2 + S(3,:).^2) ./ (1 - diag(P)'));`.
+- The Protection Level (PL) is computed by combining the second-largest slope, the detection threshold, and the missed detection margin is `PL = SLP(2) * T_threshold + K_md * sigma;`.
+
+The PL represents the maximum tolerable vertical error, ensuring that the probability of missed detection remains within acceptable limits. It accounts for satellite geometry and statistical thresholds to provide a robust safety margin.
 
 ```markdown
 ```matlab
@@ -360,7 +372,15 @@ T_threshold = 1;
 
 ### Results and Analysis
 
+This chart is a Stanford Integrity Diagram used to analyze the performance of a navigation system in terms of vertical position error (VPE) and vertical protection level (VPL). The analysis evaluates the system's ability to maintain integrity while ensuring that the position error does not exceed a predefined alert limit (AL). Below is a breakdown of the key elements in the chart:
 
+Horizontal Line at AL = 50.0 m marks the alert limit (AL). If the VPL exceeds this threshold, the system should alert the user because the integrity cannot be guaranteed. Diagonal Line (VPE = VPL) divides the chart into two regions:
+1) Below the line: The VPL overestimates the actual VPE, which is safe for integrity.
+2) Above the line: The VPL underestimates the VPE, which is a dangerous condition as the actual error exceeds the protection level.
+
+In this figure, Most data points lie below the AL = 50.0 m horizontal line, indicating that the system maintains integrity in these cases. A few data points are near or slightly below the diagonal (VPE = VPL). This suggests that the system closely estimates the actual VPE, though it remains safe. The chart includes an annotation for probabilities, which represent the false alarm and missed detection probabilities, respectively. These values are critical for defining the detection thresholds and integrity limits.
+
+![image](https://github.com/user-attachments/assets/fda4c4dc-8550-49bf-9b0a-3389dc305892)
 
 ## Task 4: LEO Satellites for Navigation
 
