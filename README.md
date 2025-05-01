@@ -96,7 +96,7 @@ The provided skymask can be utilized to identify whether the line-of-sight (LOS)
 The code is modified in Skymask_test.m and leastSquarePos.m
 
 ```markdown
-```python
+```matlab
 % Compare satellite elevation with building elevation
 is_visible = el_sat(:,end) > building_el_at_sat; % logical array
 
@@ -108,7 +108,7 @@ visible_sat_idx = find(is_visible);
 ```
 
 ```markdown
-```python
+```matlab
 [az(i), el(i), ~] = topocent(pos(1:3, :), Rot_X - pos(1:3, :));
 % Determine whether it is blocked by skymask
 if isBlockedBySkyMask(az(i), el(i), skymask)
@@ -261,14 +261,14 @@ RAIM (Receiver Autonomous Integrity Monitoring) ensures the reliability of GPS p
 - Fault Detection: The function raim_detection is called to evaluate the consistency of satellite measurements. It uses the design matrix (A), the observed-minus-computed residuals (omc), and the covariance matrix (C) to determine if there is a fault (is_fault) and identifies the faulty satellite (excluded_idx).
 
 ```markdown
-```python
+```matlab
 [is_fault, excluded_idx] = raim_detection(A, navSolutions.omc(:, currMeasNr), diag(C), settings);
 ```
 
 - Fault Isolation and Recalculation: If a fault is detected and at least four satellites remain (nmbOfSatellites - 1 >= 4), the faulty satellite is removed from the position computation. The corresponding satellite's position and pseudorange correction (clkCorrRawP) are eliminated. The position solution is recalculated using the remaining satellites by calling leastSquarePos.
 
 ```markdown
-```python
+```matlab
 satPositions(:, excluded_idx) = [];
 clkCorrRawP(excluded_idx) = [];
 [xyzdt, ~, ~, ~, navSolutions.is_fault(:, currMeasNr), ~, ~, ~] = ...
@@ -278,7 +278,7 @@ clkCorrRawP(excluded_idx) = [];
 - Position Integrity Monitoring: The RAIM process ensures that the final position solution is computed using only reliable satellite signals. Faulty measurements are flagged (navSolutions.is_fault) to maintain positioning integrity.
 
 ```markdown
-```python
+```matlab
 --- Apply position update --------------------------------------------
         
            %%%%%%%%%%%%%%%%%%%%%%% RAIM insert %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,7 +303,60 @@ clkCorrRawP(excluded_idx) = [];
             navSolutions.sdsd(:, currMeasNr) = excluded_idx;
 ```
 
-2. 123
+2. Chi-square detection
+
+```markdown
+```matlab
+function [T_threshold,PL] = chi()
+    P_fa = 1e-2;      
+    sigma = 3;         
+    n_sat = 5;        
+    dof = n_sat - 4;   
+    T_threshold = chi2inv(1 - P_fa, dof) * sigma^2; % ≈ 82.89
+    fprintf('T_threshold = %.2f meters\n', T_threshold);
+    P_md = 1e-7;    
+    fun = @(PL) ncx2cdf(T_threshold, dof, PL.^2 / sigma^2) - (1 - P_md);
+    PL_guess = 50; 
+    PL = fzero(fun, PL_guess); 
+    fprintf('3D Protection Level = %.2f meters\n', PL);
+end
+```
+
+3. computing PL
+
+```markdown
+```matlab
+PL = 1;
+WSSE_sqrt = 1;
+T_threshold = 1;
+    Nr_sat = 5;
+    I = eye(Nr_sat);   
+    isolation_mat = ones(Nr_sat, 1);
+    I = I * diag(isolation_mat);
+    y = omc;
+    S = inv(A'*C*A)*(A'*C);
+    P = A*S;
+    W = C;
+    WSSE_sqrt = sqrt(y'*W*(I-P)*y);
+    SLPOE = sqrt((S(1,:).^2+S(2,:).^2+S(3,:).^2)./(1-diag(P)'));
+    SSE = omc' * C *omc;
+    P_fa = 1e-2;      
+    n_satellites = 5;   
+    dof = n_satellites - 4; 
+    T_threshold = sqrt(chi2inv(1 - P_fa, dof));
+    P_md = 1e-7;              
+    K_md = norminv(1 - P_md); 
+    sigma = 3;
+    K = S;
+    for i = 1 : Nr_sat
+    % OLS
+     Pslope(i) = sqrt(sum((K(1:3,i)).^2)) * sqrt(Nr_sat-4) / sqrt(1-P(i,i)); 
+    % WLS
+     %Pslope(i) = sqrt(sum((K(1:3,i)).^2)) * sqrt(1/W(i,i)) / sqrt(1-P(i,i));
+    end
+    SLP = sort(Pslope,'descend');
+    PL = SLP(2) * T_threshold +  K_md * sigma;
+```
 
 ### Results and Analysis
 
