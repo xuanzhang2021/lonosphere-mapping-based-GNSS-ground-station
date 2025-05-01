@@ -93,6 +93,19 @@ The provided skymask can be utilized to identify whether the line-of-sight (LOS)
 
 ![image](https://github.com/user-attachments/assets/0000ca8a-64f0-48d3-abfe-2f33725523b5)
 
+**Anlysis**
+
+This zenith map highlights the relationship between satellite visibility and environmental obstructions, shedding light on key issues in satellite signal reliability and classification:
+
+1. Impact of Obstructions on Signal Reception:
+The map demonstrates how local obstacles, such as buildings or terrain, restrict the visibility of satellites. Satellites outside the visible sky region (defined by the zenith angle boundary) are likely to experience signal blockages, leading to Non-Line-of-Sight (NLOS) conditions. This emphasizes the need to account for environmental factors when designing or analyzing satellite-based positioning systems.
+
+2. Classification Accuracy of LOS/NLOS Signals:
+The map helps assess whether satellites are correctly classified as Line-of-Sight (LOS) or Non-Line-of-Sight (NLOS). Misclassifications can occur if the obstruction model (sky mask) or satellite signal quality is poorly understood. Incorrect LOS classification for obstructed satellites can lead to significant positioning errors due to multipath effects or signal degradation.
+
+3. Importance of Sky Mask Models:
+The visible sky boundary (sky mask) is essential for determining which satellites can provide reliable signals. The map illustrates scenarios where either the sky mask or satellite classification needs refinement to better match real-world conditions.
+
 The code is modified in Skymask_test.m and leastSquarePos.m
 
 ```markdown
@@ -121,14 +134,28 @@ The traditional elevation angle weighted least square positioning results are sh
 
 ![image](https://github.com/user-attachments/assets/f4c1c20c-39c9-4e87-a4ae-54ff2d655b64)
 
-
 The skymask based weighted least square positioning results are shown below:
 
 ![image](https://github.com/user-attachments/assets/b9b345b5-acfb-46fd-9553-ac4e79e1ce09)
 
 
-### Results and Analysis
+**Anlysis**
 
+These two sets of results compare the performance of a traditional elevation angle weighted least square method and a sky mask-based weighted least square method in GNSS positioning. The primary difference lies in the handling of satellite visibility and its effect on positioning accuracy and reliability.
+
+1. Coordinate Variations (E, N, U):
+
+The first method (traditional weighting) shows less consistent variations in the East (E) and Up (U) components, with significant deviations, especially in the vertical direction. This indicates potential contamination from Non-Line-of-Sight (NLOS) signals or poor satellite geometry.
+The sky mask-based method significantly reduces the variations, especially in the Up (U) component. This improvement suggests that the sky mask effectively filters out NLOS satellites, leading to more stable positioning.
+
+2. Mean Position Accuracy:
+
+In the 3D plots, the traditional method's mean position is closer to the true position (lower height deviation), but the dispersion of measurements is wider.
+The sky mask-based method shows a higher vertical offset in the mean position but achieves tighter clustering of measurements, indicating improved consistency.
+
+3. Sky Plot and PDOP:
+
+Both methods share the same PDOP (6.2278), suggesting identical satellite geometry. However, the sky mask-based method likely excludes obstructed satellites, improving the quality of the solution despite the same PDOP.
 
 ## Task 3: GPS RAIM (Receiver Autonomous Integrity Monitoring)
 ### Introduction
@@ -439,8 +466,6 @@ https://genai.polyu.edu.hk/GPT4O
 https://copilot.cloud.microsoft/?fromCode=cmcv2&redirectId=77295F4909EC4C83B5A26440BF4A94B0&auth=2
 
 ## Task 5: GNSS Remote Sensing
-
-Here is the essay.
 
 Global Navigation Satellite Systems (GNSS), initially designed for positioning and navigation, have evolved into versatile tools for Earth observation. Among their emerging applications, GNSS Reflectometry (GNSS-R) stands out as a groundbreaking technique that repurposes reflected GNSS signals to monitor terrestrial and oceanic surfaces. This essay examines the transformative role of GNSS-R in remote sensing, focusing on its principles, applications in environmental monitoring, and contributions to climate science.
 
