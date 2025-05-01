@@ -95,7 +95,8 @@ The provided skymask can be utilized to identify whether the line-of-sight (LOS)
 
 The code is modified in Skymask_test.m and leastSquarePos.m
 
-'''
+```markdown
+```python
 % Compare satellite elevation with building elevation
 is_visible = el_sat(:,end) > building_el_at_sat; % logical array
 
@@ -104,17 +105,17 @@ is_visible = el_sat(:,end) > building_el_at_sat; % logical array
 blocked_sat_idx = find(~is_visible);
 
 visible_sat_idx = find(is_visible);
-'''
+```
 
-'''
+```markdown
+```python
 [az(i), el(i), ~] = topocent(pos(1:3, :), Rot_X - pos(1:3, :));
-
 % Determine whether it is blocked by skymask
 if isBlockedBySkyMask(az(i), el(i), skymask)
     % Jump over the blocked satellite
     continue;
 end
-'''
+```
 
 The traditional elevation angle weighted least square positioning results are shown below:
 
@@ -259,22 +260,25 @@ RAIM (Receiver Autonomous Integrity Monitoring) ensures the reliability of GPS p
 
 - Fault Detection: The function raim_detection is called to evaluate the consistency of satellite measurements. It uses the design matrix (A), the observed-minus-computed residuals (omc), and the covariance matrix (C) to determine if there is a fault (is_fault) and identifies the faulty satellite (excluded_idx).
 
-'''
+```markdown
+```python
 [is_fault, excluded_idx] = raim_detection(A, navSolutions.omc(:, currMeasNr), diag(C), settings);
-'''
+```
 
 - Fault Isolation and Recalculation: If a fault is detected and at least four satellites remain (nmbOfSatellites - 1 >= 4), the faulty satellite is removed from the position computation. The corresponding satellite's position and pseudorange correction (clkCorrRawP) are eliminated. The position solution is recalculated using the remaining satellites by calling leastSquarePos.
 
-'''
+```markdown
+```python
 satPositions(:, excluded_idx) = [];
 clkCorrRawP(excluded_idx) = [];
 [xyzdt, ~, ~, ~, navSolutions.is_fault(:, currMeasNr), ~, ~, ~] = ...
     leastSquarePos(satPositions, clkCorrRawP, settings);
-'''
+```
 
 - Position Integrity Monitoring: The RAIM process ensures that the final position solution is computed using only reliable satellite signals. Faulty measurements are flagged (navSolutions.is_fault) to maintain positioning integrity.
 
-'''
+```markdown
+```python
 --- Apply position update --------------------------------------------
         
            %%%%%%%%%%%%%%%%%%%%%%% RAIM insert %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,7 +301,7 @@ clkCorrRawP(excluded_idx) = [];
                     leastSquarePos(satPositions, clkCorrRawP, settings);
             end
             navSolutions.sdsd(:, currMeasNr) = excluded_idx;
-'''
+```
 
 2. 123
 
